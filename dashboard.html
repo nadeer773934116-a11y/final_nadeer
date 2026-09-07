@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>إطلاق حملة ممولة - المنصة الذكية</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4f6f9;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+        }
+        .dashboard-card {
+            background: #fff;
+            width: 100%;
+            max-width: 800px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            padding: 30px;
+        }
+        .header {
+            border-bottom: 2px solid #eef0f4;
+            padding-bottom: 15px;
+            margin-bottom: 25px;
+        }
+        .header h2 {
+            margin: 0;
+            color: #1c1e21;
+        }
+        .section-title {
+            font-size: 16px;
+            color: #1877f2;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+        /* Upload Area */
+        .upload-area {
+            border: 2px dashed #ccd0d5;
+            border-radius: 8px;
+            padding: 40px;
+            text-align: center;
+            background-color: #f7f8fa;
+            cursor: pointer;
+            transition: 0.3s;
+            margin-bottom: 25px;
+        }
+        .upload-area:hover {
+            border-color: #1877f2;
+            background-color: #ebf5ff;
+        }
+        /* AI Generator */
+        .ai-section, .settings-section {
+            background: #fafbfc;
+            padding: 20px;
+            border-radius: 8px;
+            border: 1px solid #eef0f4;
+            margin-bottom: 25px;
+        }
+        input[type="text"], input[type="number"], select {
+            width: 100%;
+            padding: 12px;
+            margin-top: 8px;
+            border: 1px solid #ccd0d5;
+            border-radius: 6px;
+            box-sizing: border-box;
+            font-family: inherit;
+        }
+        .btn-ai {
+            background-color: #000;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 6px;
+            cursor: pointer;
+            margin-top: 10px;
+            font-weight: bold;
+        }
+        .ai-result {
+            display: none;
+            margin-top: 15px;
+            padding: 15px;
+            background: #e7f3ff;
+            border-left: 4px solid #1877f2;
+            border-radius: 4px;
+        }
+        /* Grid for Settings */
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+        /* Launch Button */
+        .launch-btn {
+            background-color: #1877f2;
+            color: #fff;
+            border: none;
+            padding: 15px;
+            width: 100%;
+            font-size: 18px;
+            font-weight: bold;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        .launch-btn:hover {
+            background-color: #166fe5;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="dashboard-card">
+        <div class="header">
+            <h2>إنشاء إعلان ممول جديد</h2>
+            <p style="color: #606770; font-size: 14px;">دع الذكاء الاصطناعي يتولى إعداد حملتك وإطلاقها نحو جمهورك المستهدف.</p>
+        </div>
+
+        <!-- الخطوة 1: رفع الفيديو -->
+        <div class="section-title">1. المادة المرئية</div>
+        <div class="upload-area" onclick="alert('تم فتح نافذة اختيار الملفات واستخراج مُعرف الفيديو (video_id) في الخلفية.')">
+            <h3 style="color: #606770; margin: 0;">📤 اسحب وأفلت الفيديو الترويجي هنا</h3>
+            <p style="color: #8d949e; font-size: 13px;">يدعم الفيديوهات السينمائية المولدة عبر Kling AI أو Flow</p>
+        </div>
+
+        <!-- الخطوة 2: الذكاء الاصطناعي -->
+        <div class="section-title">2. توليد النص التسويقي الذكي</div>
+        <div class="ai-section">
+            <label style="font-weight: bold; color: #1c1e21;">أدخل فكرة مختصرة عن المنتج/الخدمة:</label>
+            <input type="text" id="ai-idea" placeholder="مثال: خصم 50% على خدمات تصميم المتاجر الإلكترونية لفترة محدودة...">
+            <button class="btn-ai" onclick="generateText()">✨ توليد نص تسويقي احترافي</button>
+            
+            <div class="ai-result" id="ai-output">
+                <strong>النص المقترح:</strong> 🚀 هل تبحث عن متجر إلكتروني يحقق مبيعات خيالية؟ استغل الآن عرض الـ 50% وابدأ رحلة نجاحك الرقمية معنا!
+                <br><br>
+                <label>اختر زر اتخاذ الإجراء (CTA):</label>
+                <select style="width: auto; display: block;">
+                    <option>تواصل معنا (Send Message)</option>
+                    <option>تسجيل الآن (Sign Up)</option>
+                    <option>اعرف المزيد (Learn More)</option>
+                </select>
+            </div>
+        </div>
+
+        <!-- الخطوة 3: الاستهداف والميزانية -->
+        <div class="section-title">3. إعدادات الاستهداف والميزانية</div>
+        <div class="settings-section grid-2">
+            <div>
+                <label style="font-weight: bold;">الميزانية اليومية ($)</label>
+                <input type="number" value="10" min="1">
+            </div>
+            <div>
+                <label style="font-weight: bold;">النطاق الجغرافي (محول للإحداثيات)</label>
+                <input type="text" value="محيط 15 كم حول مدينة إب">
+            </div>
+        </div>
+
+        <!-- الخطوة 4: الإطلاق -->
+        <button class="launch-btn" onclick="alert('تم تجميع حزمة البيانات (الفيديو + النص + الميزانية + الإحداثيات) وإرسالها بنجاح عبر Marketing API إلى خوادم فيسبوك! 🚀')">
+            إطلاق الإعلان الممول
+        </button>
+    </div>
+
+    <script>
+        function generateText() {
+            const btn = document.querySelector('.btn-ai');
+            btn.innerHTML = 'جاري التحليل والتوليد... ⏳';
+            setTimeout(() => {
+                document.getElementById('ai-output').style.display = 'block';
+                btn.innerHTML = '✨ توليد نص تسويقي احترافي';
+            }, 1000);
+        }
+    </script>
+
+</body>
+</html>
